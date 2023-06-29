@@ -145,7 +145,7 @@ public class SpiderController : MonoBehaviour
         if (valueX != 0)
             transform.position += Vector3.Cross(transform.up, transform.forward) * valueX * _speed * multiplier * Time.fixedDeltaTime;
 
-        // 
+        // si on bouge on calcule la nouvelle position
         if (valueX != 0 || valueY != 0)
         {
             pn = GetClosestPoint(transform.position, transform.forward, transform.up, 0.5f, 0.1f, 30, -30, 4);
