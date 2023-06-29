@@ -20,6 +20,9 @@ public class SpiderController : MonoBehaviour
     private Vector3 upward;
     private Quaternion lastRot;
     private Vector3[] pn;
+    
+    private float valueX;
+    private float valueY;
 
 
     Vector3[] GetIcoSphereCoords(int depth)
@@ -135,13 +138,14 @@ public class SpiderController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
             multiplier = 2f;
 
-        float valueY = Input.GetAxis("Vertical");
+        valueY = Input.GetAxis("Vertical");
         if (valueY != 0)
             transform.position += transform.forward * valueY * _speed * multiplier * Time.fixedDeltaTime;
-        float valueX = Input.GetAxis("Horizontal");
+        valueX = Input.GetAxis("Horizontal");
         if (valueX != 0)
             transform.position += Vector3.Cross(transform.up, transform.forward) * valueX * _speed * multiplier * Time.fixedDeltaTime;
 
+        // 
         if (valueX != 0 || valueY != 0)
         {
             pn = GetClosestPoint(transform.position, transform.forward, transform.up, 0.5f, 0.1f, 30, -30, 4);
@@ -153,6 +157,7 @@ public class SpiderController : MonoBehaviour
             transform.position = Vector3.Lerp(lastPosition, pos[0], 1f / (1f + smoothness));
 
             forward = velocity.normalized;
+            
             Quaternion q = Quaternion.LookRotation(forward, upward);
             transform.rotation = Quaternion.Lerp(lastRot, q, 1f / (1f + smoothness));
         }
