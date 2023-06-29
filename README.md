@@ -5,4 +5,6 @@
 - Make sure to have the animation rigging package installed. You can install it via package manager (be careful it is still a preview package)
 
 ## Explaination video
-https://www.youtube.com/watch?v=AhywDyu0EGw
+[Procedural Animation - This Spider can climb anywhere! Unity3D Tutorial](https://youtu.be/AhywDyu0EGw)
+
+[Spider PROCEDURAL Animation - Works on any other insect! - Unity3D Animation Rigging Tutorial](https://youtu.be/swYBGqXtHEY)https://youtu.be/swYBGqXtHEY
