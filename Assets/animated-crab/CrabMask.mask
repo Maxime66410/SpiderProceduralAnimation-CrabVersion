@@ -1,0 +1,291 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CrabMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/Bone
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001/Antenna.L.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001/Antenna.L.002/Antenna.L.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001/Antenna.L.002/Antenna.L.003/Antenna.L.004
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001/Antenna.L.002/Antenna.L.003/Antenna.L.004/Antenna.L.005
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001/Antenna.L.002/Antenna.L.003/Antenna.L.004/Antenna.L.005/Antenna.L.006
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001/Antenna.L.002/Antenna.L.003/Antenna.L.004/Antenna.L.005/Antenna.L.006/Antenna.L.007
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001/Antenna.L.002/Antenna.L.003/Antenna.L.004/Antenna.L.005/Antenna.L.006/Antenna.L.007/Antenna.L.008
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001/Antenna.L.002/Antenna.L.003/Antenna.L.004/Antenna.L.005/Antenna.L.006/Antenna.L.007/Antenna.L.008/Antenna.L.009
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.L/Antenna.L.001/Antenna.L.002/Antenna.L.003/Antenna.L.004/Antenna.L.005/Antenna.L.006/Antenna.L.007/Antenna.L.008/Antenna.L.009/Antenna.L.009_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001/Antenna.R.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001/Antenna.R.002/Antenna.R.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001/Antenna.R.002/Antenna.R.003/Antenna.R.004
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001/Antenna.R.002/Antenna.R.003/Antenna.R.004/Antenna.R.005
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001/Antenna.R.002/Antenna.R.003/Antenna.R.004/Antenna.R.005/Antenna.R.006
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001/Antenna.R.002/Antenna.R.003/Antenna.R.004/Antenna.R.005/Antenna.R.006/Antenna.R.007
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001/Antenna.R.002/Antenna.R.003/Antenna.R.004/Antenna.R.005/Antenna.R.006/Antenna.R.007/Antenna.R.008
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001/Antenna.R.002/Antenna.R.003/Antenna.R.004/Antenna.R.005/Antenna.R.006/Antenna.R.007/Antenna.R.008/Antenna.R.009
+    m_Weight: 1
+  - m_Path: Armature/Bone/Antenna.R/Antenna.R.001/Antenna.R.002/Antenna.R.003/Antenna.R.004/Antenna.R.005/Antenna.R.006/Antenna.R.007/Antenna.R.008/Antenna.R.009/Antenna.R.009_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.L
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.L/Arm.L.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.L/Arm.L.001/Arm.L.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.L/Arm.L.001/Arm.L.002/Arm.L.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.L/Arm.L.001/Arm.L.002/Arm.L.003/Arm.L.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.R
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.R/Arm.R.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.R/Arm.R.001/Arm.R.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.R/Arm.R.001/Arm.R.002/Arm.R.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Arm.R/Arm.R.001/Arm.R.002/Arm.R.003/Arm.R.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.L
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.L/Eye.L.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.L/Eye.L.001/Eye.L.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.L/Eye.L.001/Eye.L.002/Eye.L.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.L/Eye.L.001/Eye.L.002/Eye.L.003/Eye.L.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.R
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.R/Eye.R.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.R/Eye.R.001/Eye.R.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.R/Eye.R.001/Eye.R.002/Eye.R.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Eye.R/Eye.R.001/Eye.R.002/Eye.R.003/Eye.R.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg.L
+    m_Weight: 0
+  - m_Path: Armature/Bone/Leg.L/Leg.L.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg.L/Leg.L.001/Leg.L.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg.L/Leg.L.001/Leg.L.002/Leg.L.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg.L/Leg.L.001/Leg.L.002/Leg.L.003/Leg.L.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg.R
+    m_Weight: 0
+  - m_Path: Armature/Bone/Leg.R/Leg.R.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg.R/Leg.R.001/Leg.R.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg.R/Leg.R.001/Leg.R.002/Leg.R.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg.R/Leg.R.001/Leg.R.002/Leg.R.003/Leg.R.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg2.L
+    m_Weight: 0
+  - m_Path: Armature/Bone/Leg2.L/Leg2.L.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg2.L/Leg2.L.001/Leg2.L.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg2.L/Leg2.L.001/Leg2.L.002/Leg2.L.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg2.L/Leg2.L.001/Leg2.L.002/Leg2.L.003/Leg2.L.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg2.R
+    m_Weight: 0
+  - m_Path: Armature/Bone/Leg2.R/Leg2.R.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg2.R/Leg2.R.001/Leg2.R.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg2.R/Leg2.R.001/Leg2.R.002/Leg2.R.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg2.R/Leg2.R.001/Leg2.R.002/Leg2.R.003/Leg2.R.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg3.L
+    m_Weight: 0
+  - m_Path: Armature/Bone/Leg3.L/Leg3.L.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg3.L/Leg3.L.001/Leg3.L.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg3.L/Leg3.L.001/Leg3.L.002/Leg3.L.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg3.L/Leg3.L.001/Leg3.L.002/Leg3.L.003/Leg3.L.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg3.R
+    m_Weight: 0
+  - m_Path: Armature/Bone/Leg3.R/Leg3.R.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg3.R/Leg3.R.001/Leg3.R.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg3.R/Leg3.R.001/Leg3.R.002/Leg3.R.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg3.R/Leg3.R.001/Leg3.R.002/Leg3.R.003/Leg3.R.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg4.L
+    m_Weight: 0
+  - m_Path: Armature/Bone/Leg4.L/Leg4.L.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg4.L/Leg4.L.001/Leg4.L.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg4.L/Leg4.L.001/Leg4.L.002/Leg4.L.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg4.L/Leg4.L.001/Leg4.L.002/Leg4.L.003/Leg4.L.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg4.R
+    m_Weight: 0
+  - m_Path: Armature/Bone/Leg4.R/Leg4.R.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg4.R/Leg4.R.001/Leg4.R.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg4.R/Leg4.R.001/Leg4.R.002/Leg4.R.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Leg4.R/Leg4.R.001/Leg4.R.002/Leg4.R.003/Leg4.R.003_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001/minipince.l.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001/minipince.l.002/minipince.l.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001/minipince.l.002/minipince.l.003/minipince.l.005
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001/minipince.l.002/minipince.l.003/minipince.l.005/minipince.l.004
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001/minipince.l.002/minipince.l.003/minipince.l.005/minipince.l.004/minipince.l.006
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001/minipince.l.002/minipince.l.003/minipince.l.005/minipince.l.004/minipince.l.006/minipince.l.006_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001/minipince.l.002/minipince.l.003/minipince.l.005/minipince.l.004/minipince.l.007
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001/minipince.l.002/minipince.l.003/minipince.l.005/minipince.l.004/minipince.l.007/minipince.l.008
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.l/minipince.l.001/minipince.l.002/minipince.l.003/minipince.l.005/minipince.l.004/minipince.l.007/minipince.l.008/minipince.l.008_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001/minipince.r.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001/minipince.r.002/minipince.r.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001/minipince.r.002/minipince.r.003/minipince.r.005
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001/minipince.r.002/minipince.r.003/minipince.r.005/minipince.r.004
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001/minipince.r.002/minipince.r.003/minipince.r.005/minipince.r.004/minipince.r.006
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001/minipince.r.002/minipince.r.003/minipince.r.005/minipince.r.004/minipince.r.006/minipince.r.006_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001/minipince.r.002/minipince.r.003/minipince.r.005/minipince.r.004/minipince.r.007
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001/minipince.r.002/minipince.r.003/minipince.r.005/minipince.r.004/minipince.r.007/minipince.r.008
+    m_Weight: 1
+  - m_Path: Armature/Bone/minipince.r/minipince.r.001/minipince.r.002/minipince.r.003/minipince.r.005/minipince.r.004/minipince.r.007/minipince.r.008/minipince.r.008_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.L
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.L/Mouth.L.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.L/Mouth.L.001/Mouth.L.001_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.L/Mouth.L.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.L/Mouth.L.002/Mouth.L.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.L/Mouth.L.002/Mouth.L.003/Mouth.L.004
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.L/Mouth.L.002/Mouth.L.003/Mouth.L.004/Mouth.L.005
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.L/Mouth.L.002/Mouth.L.003/Mouth.L.004/Mouth.L.005/Mouth.L.005_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.R
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.R/Mouth.R.001
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.R/Mouth.R.001/Mouth.R.001_end
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.R/Mouth.R.002
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.R/Mouth.R.002/Mouth.R.003
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.R/Mouth.R.002/Mouth.R.003/Mouth.R.004
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.R/Mouth.R.002/Mouth.R.003/Mouth.R.004/Mouth.R.005
+    m_Weight: 1
+  - m_Path: Armature/Bone/Mouth.R/Mouth.R.002/Mouth.R.003/Mouth.R.004/Mouth.R.005/Mouth.R.005_end
+    m_Weight: 1
+  - m_Path: Armature/Leg.IK.L
+    m_Weight: 0
+  - m_Path: Armature/Leg.IK.L/Leg.IK.L_end
+    m_Weight: 1
+  - m_Path: Armature/Leg.IK.R
+    m_Weight: 0
+  - m_Path: Armature/Leg.IK.R/Leg.IK.R_end
+    m_Weight: 1
+  - m_Path: Armature/Leg2.IK.L
+    m_Weight: 0
+  - m_Path: Armature/Leg2.IK.L/Leg2.IK.L_end
+    m_Weight: 1
+  - m_Path: Armature/Leg2.IK.R
+    m_Weight: 0
+  - m_Path: Armature/Leg2.IK.R/Leg2.IK.R_end
+    m_Weight: 1
+  - m_Path: Armature/Leg3.IK.L
+    m_Weight: 0
+  - m_Path: Armature/Leg3.IK.L/Leg3.IK.L_end
+    m_Weight: 1
+  - m_Path: Armature/Leg3.IK.R
+    m_Weight: 0
+  - m_Path: Armature/Leg3.IK.R/Leg3.IK.R_end
+    m_Weight: 1
+  - m_Path: Armature/Leg4.IK.L
+    m_Weight: 0
+  - m_Path: Armature/Leg4.IK.L/Leg4.IK.L_end
+    m_Weight: 1
+  - m_Path: Armature/Leg4.IK.R
+    m_Weight: 0
+  - m_Path: Armature/Leg4.IK.R/Leg4.IK.R_end
+    m_Weight: 1
+  - m_Path: Crab
+    m_Weight: 1
