@@ -65,78 +65,92 @@ public class SpiderProceduralAnimation : MonoBehaviour
         _lastBodyPos = transform.position;
     }
 
+    // On effectue un pas
     IEnumerator PerformStep(int index, Vector3 targetPoint)
     {
-        Vector3 startPos = _lastLegPositions[index];
-        for(int i = 1; i <= smoothness; ++i)
+        Vector3 startPos = _lastLegPositions[index]; // On récupère la position de départ
+        for(int i = 1; i <= smoothness; ++i) // On boucle sur le nombre de frames pour effectuer le pas
         {
-            legTargets[index].position = Vector3.Lerp(startPos, targetPoint, i / (float)(smoothness + 1f));
-            legTargets[index].position += transform.up * (Mathf.Sin(i / (float)(smoothness + 1f) * Mathf.PI) * stepHeight);
-            yield return new WaitForFixedUpdate();
+            legTargets[index].position = Vector3.Lerp(startPos, targetPoint, i / (float)(smoothness + 1f)); // On déplace le point de contact
+            legTargets[index].position += transform.up * (Mathf.Sin(i / (float)(smoothness + 1f) * Mathf.PI) * stepHeight); // On déplace le point de contact
+            yield return new WaitForFixedUpdate(); // On attend la frame suivante
         }
-        legTargets[index].position = targetPoint;
-        _lastLegPositions[index] = legTargets[index].position;
-        _legMoving[0] = false;
+        legTargets[index].position = targetPoint; // On déplace le point de contact
+        _lastLegPositions[index] = legTargets[index].position; // On met à jour la position du point de contact à la frame précédente
+        _legMoving[0] = false; // On met à jour le booléen
     }
 
 
     void FixedUpdate()
     {
-        _velocity = transform.position - _lastBodyPos;
-        _velocity = (_velocity + smoothness * _lastVelocity) / (smoothness + 1f);
+        _velocity = transform.position - _lastBodyPos; // On calcule la vitesse du corps
+        _velocity = (_velocity + smoothness * _lastVelocity) / (smoothness + 1f); // On lisse la vitesse du corps
 
-        if (_velocity.magnitude < 0.000025f)
+        // On calcule la direction du corps
+        if (_velocity.magnitude < 0.000025f) // Si la vitesse est trop faible
             _velocity = _lastVelocity;
         else
             _lastVelocity = _velocity;
         
         
-        Vector3[] desiredPositions = new Vector3[_nbLegs];
-        int indexToMove = -1;
-        float maxDistance = stepSize;
-        for (int i = 0; i < _nbLegs; ++i)
+        Vector3[] desiredPositions = new Vector3[_nbLegs]; // On initialise le tableau
+        int indexToMove = -1; // On initialise la variable
+        float maxDistance = stepSize; // On initialise la variable
+        // On calcule les positions des points de contact
+        for (int i = 0; i < _nbLegs; ++i) 
         {
-            desiredPositions[i] = transform.TransformPoint(_defaultLegPositions[i]);
+            desiredPositions[i] = transform.TransformPoint(_defaultLegPositions[i]); // On calcule la position du point de contact
 
-            float distance = Vector3.ProjectOnPlane(desiredPositions[i] + _velocity * _velocityMultiplier - _lastLegPositions[i], transform.up).magnitude;
+            // On calcule la distance entre la position du point de contact et la position du point de contact à la frame précédente
+            float distance = Vector3.ProjectOnPlane(desiredPositions[i] + _velocity * _velocityMultiplier - _lastLegPositions[i], transform.up).magnitude; 
+            
+            // On met à jour la variable
             if (distance > maxDistance)
             {
                 maxDistance = distance;
                 indexToMove = i;
             }
         }
+        
+        // On calcule la direction du corps
         for (int i = 0; i < _nbLegs; ++i)
-            if (i != indexToMove)
-                legTargets[i].position = _lastLegPositions[i];
+            if (i != indexToMove) // Si la patte n'est pas en train de bouger
+                legTargets[i].position = _lastLegPositions[i]; // On met à jour la position du point de contact
 
+        // On effectue le pas
         if (indexToMove != -1 && !_legMoving[0])
         {
+            // Avec desiredPositions[indexToMove] plus Mathf.Clamp pour éviter que la patte ne se déplace trop loin
             Vector3 targetPoint = desiredPositions[indexToMove] + Mathf.Clamp(_velocity.magnitude * _velocityMultiplier, 0.0f, 1.5f) * (desiredPositions[indexToMove] - legTargets[indexToMove].position) + _velocity * _velocityMultiplier;
 
+            // On calcule la position du point de contact
             Vector3[] positionAndNormalFwd = MatchToSurfaceFromAbove(targetPoint + _velocity * _velocityMultiplier, raycastRange, (transform.parent.up - _velocity * 100).normalized);
+            // On calcule la position du point de contact avec la patte en arrière
             Vector3[] positionAndNormalBwd = MatchToSurfaceFromAbove(targetPoint + _velocity * _velocityMultiplier, raycastRange*(1f + _velocity.magnitude), (transform.parent.up + _velocity * 75).normalized);
             
             _legMoving[0] = true;
             
-            if (positionAndNormalFwd[1] == Vector3.zero)
+            // On effectue le pas
+            if (positionAndNormalFwd[1] == Vector3.zero) // Si la patte est en l'air
             {
-                StartCoroutine(PerformStep(indexToMove, positionAndNormalBwd[0]));
+                StartCoroutine(PerformStep(indexToMove, positionAndNormalBwd[0])); // On effectue le pas avec la patte en arrière
             }
             else
             {
-                StartCoroutine(PerformStep(indexToMove, positionAndNormalFwd[0]));
+                StartCoroutine(PerformStep(indexToMove, positionAndNormalFwd[0])); // On effectue le pas avec la patte en avant
             }
         }
 
         _lastBodyPos = transform.position;
+        // On calcule l'orientation du corps
         if (_nbLegs > 3 && bodyOrientation)
         {
-            Vector3 v1 = legTargets[0].position - legTargets[1].position;
+            Vector3 v1 = legTargets[0].position - legTargets[1].position; // On calcule les vecteurs pour calculer la normale
             Vector3 v2 = legTargets[2].position - legTargets[3].position;
-            Vector3 normal = Vector3.Cross(v1, v2).normalized;
-            Vector3 up = Vector3.Lerp(_lastBodyUp, normal, 1f / (float)(smoothness + 1));
-            transform.up = up;
-            transform.rotation = Quaternion.LookRotation(transform.parent.forward, up);
+            Vector3 normal = Vector3.Cross(v1, v2).normalized; // On calcule la normale avec les deux vecteurs en paramètre avec du Cross pour avoir la normale
+            Vector3 up = Vector3.Lerp(_lastBodyUp, normal, 1f / (float)(smoothness + 1));  // On lisse la normale
+            transform.up = up;  
+            transform.rotation = Quaternion.LookRotation(transform.parent.forward, up); // On calcule la rotation du corps
             _lastBodyUp = transform.up;
         }
     }
