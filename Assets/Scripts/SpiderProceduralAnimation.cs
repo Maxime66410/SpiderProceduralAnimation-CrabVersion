@@ -53,14 +53,14 @@ public class SpiderProceduralAnimation : MonoBehaviour
         _nbLegs = legTargets.Length; // On initialise le nombre de pattes
         _defaultLegPositions = new Vector3[_nbLegs]; // On initialise les tableaux
         _lastLegPositions = new Vector3[_nbLegs]; // On initialise les tableaux
-        _legMoving = new bool[_nbLegs]; // On initialise les tableaux
+        _legMoving = new bool[_nbLegs / 2]; // On initialise les tableaux
         
         // On initialise les tableaux
         for (int i = 0; i < _nbLegs; ++i)
         {
             _defaultLegPositions[i] = legTargets[i].localPosition; // On récupère les positions de base des points de contact
             _lastLegPositions[i] = legTargets[i].position; // On initialise les positions des points de contact à la frame précédente
-            _legMoving[i] = false; // On initialise les booléens
+            _legMoving[i / 2] = false; // On initialise les booléens
         }
         
         // On initialise les variables
@@ -68,18 +68,30 @@ public class SpiderProceduralAnimation : MonoBehaviour
     }
 
     // On effectue un pas
-    IEnumerator PerformStep(int index, Vector3 targetPoint)
+    IEnumerator PerformStep(int firstIndex, int secondIndex, Vector3 firstTargetPoint, Vector3 secondTargetPoint)
     {
-        Vector3 startPos = _lastLegPositions[index]; // On récupère la position de départ
-        for(int i = 1; i <= smoothness; ++i) // On boucle sur le nombre de frames pour effectuer le pas
+        Vector3 firstStartPos = _lastLegPositions[firstIndex];
+        Vector3 secondStartPos = _lastLegPositions[secondIndex];
+
+        for (int i = 1; i <= smoothness; ++i)
         {
-            legTargets[index].position = Vector3.Lerp(startPos, targetPoint, i / (float)(smoothness + 1f)); // On déplace le point de contact
-            legTargets[index].position += transform.up * (Mathf.Sin(i / (float)(smoothness + 1f) * Mathf.PI) * stepHeight); // On déplace le point de contact
-            yield return new WaitForFixedUpdate(); // On attend la frame suivante
+            float t = i / (float)(smoothness + 1f);
+            legTargets[firstIndex].position = Vector3.Lerp(firstStartPos, firstTargetPoint, t);
+            legTargets[secondIndex].position = Vector3.Lerp(secondStartPos, secondTargetPoint, t);
+
+            legTargets[firstIndex].position += transform.up * (Mathf.Sin(t * Mathf.PI) * stepHeight);
+            legTargets[secondIndex].position += transform.up * (Mathf.Sin(t * Mathf.PI) * stepHeight);
+
+            yield return new WaitForFixedUpdate();
         }
-        legTargets[index].position = targetPoint; // On déplace le point de contact
-        _lastLegPositions[index] = legTargets[index].position; // On met à jour la position du point de contact à la frame précédente
-        _legMoving[0] = false; // On met à jour le booléen
+
+        legTargets[firstIndex].position = firstTargetPoint;
+        legTargets[secondIndex].position = secondTargetPoint;
+
+        _lastLegPositions[firstIndex] = legTargets[firstIndex].position;
+        _lastLegPositions[secondIndex] = legTargets[secondIndex].position;
+
+        _legMoving[firstIndex / 2] = false;
     }
 
 
@@ -120,9 +132,20 @@ public class SpiderProceduralAnimation : MonoBehaviour
                 legTargets[i].position = _lastLegPositions[i]; // On met à jour la position du point de contact
 
         // On effectue le pas
-        if (indexToMove != -1 && !_legMoving[0])
+        if (indexToMove != -1 && !_legMoving[indexToMove / 2])
         {
-            // Avec desiredPositions[indexToMove] plus Mathf.Clamp pour éviter que la patte ne se déplace trop loin
+            int firstIndex = indexToMove;
+            int secondIndex = 0;
+            if (indexToMove + 1 < _nbLegs)
+            {
+                secondIndex = indexToMove + 1;
+            }
+            else
+            {
+                secondIndex = indexToMove - 1;
+            }
+
+                // Avec desiredPositions[indexToMove] plus Mathf.Clamp pour éviter que la patte ne se déplace trop loin
             Vector3 targetPoint = desiredPositions[indexToMove] + Mathf.Clamp(_velocity.magnitude * _velocityMultiplier, 0.0f, 1.5f) * (desiredPositions[indexToMove] - legTargets[indexToMove].position) + _velocity * _velocityMultiplier;
 
             // On calcule la position du point de contact
@@ -130,16 +153,16 @@ public class SpiderProceduralAnimation : MonoBehaviour
             // On calcule la position du point de contact avec la patte en arrière
             Vector3[] positionAndNormalBwd = MatchToSurfaceFromAbove(targetPoint + _velocity * _velocityMultiplier, raycastRange*(1f + _velocity.magnitude), (transform.parent.up + _velocity * 75).normalized);
             
-            _legMoving[0] = true;
+            _legMoving[firstIndex / 2] = true;
             
             // On effectue le pas
             if (positionAndNormalFwd[1] == Vector3.zero) // Si la patte est en l'air
             {
-                StartCoroutine(PerformStep(indexToMove, positionAndNormalBwd[0])); // On effectue le pas avec la patte en arrière
+                StartCoroutine(PerformStep(firstIndex, secondIndex, positionAndNormalBwd[0], positionAndNormalBwd[0]));
             }
             else
             {
-                StartCoroutine(PerformStep(indexToMove, positionAndNormalFwd[0])); // On effectue le pas avec la patte en avant
+                StartCoroutine(PerformStep(firstIndex, secondIndex, positionAndNormalFwd[0], positionAndNormalFwd[0]));
             }
         }
 
