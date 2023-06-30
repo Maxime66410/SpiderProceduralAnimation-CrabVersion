@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// Faire en sorte que la marche arrière fonctionne correctement
 
 public class SpiderController : MonoBehaviour
 {
@@ -139,12 +140,14 @@ public class SpiderController : MonoBehaviour
             multiplier = 2f;
 
         valueY = Input.GetAxis("Vertical");
-        if (valueY != 0)
-            transform.position += transform.forward * valueY * _speed * multiplier * Time.fixedDeltaTime;
+        if (valueY != 0) // transform.forward * valueY * _speed * multiplier * Time.fixedDeltaTime
+            transform.position += Vector3.Cross(-transform.up, transform.right) * valueY * _speed * multiplier * Time.fixedDeltaTime;
         valueX = Input.GetAxis("Horizontal");
         if (valueX != 0)
             transform.position += Vector3.Cross(transform.up, transform.forward) * valueX * _speed * multiplier * Time.fixedDeltaTime;
 
+        //Debug.Log($"ValueX : {valueX} | ValueY : {valueY}");
+        
         // si on bouge on calcule la nouvelle position
         if (valueX != 0 || valueY != 0)
         {

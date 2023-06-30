@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Faire en sorte que on se déplace 2 pattes à la fois
+
 public class SpiderProceduralAnimation : MonoBehaviour
 {
     public Transform[] legTargets; // Les points de contact des pattes
