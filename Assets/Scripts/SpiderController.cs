@@ -24,6 +24,7 @@ public class SpiderController : MonoBehaviour
     
     private float valueX;
     private float valueY;
+    private bool sideWalk = true;
 
 
     Vector3[] GetIcoSphereCoords(int depth)
@@ -142,27 +143,58 @@ public class SpiderController : MonoBehaviour
         valueY = Input.GetAxis("Vertical");
         if (valueY != 0) // transform.forward * valueY * _speed * multiplier * Time.fixedDeltaTime
             transform.position += Vector3.Cross(-transform.up, transform.right) * valueY * _speed * multiplier * Time.fixedDeltaTime;
+            //transform.position += transform.forward * valueY * _speed * multiplier * Time.fixedDeltaTime;
+
+        if (valueY < 0)
+        {
+            sideWalk = false;
+        }
+        else
+        {
+            sideWalk = true;
+        }
+
         valueX = Input.GetAxis("Horizontal");
         if (valueX != 0)
             transform.position += Vector3.Cross(transform.up, transform.forward) * valueX * _speed * multiplier * Time.fixedDeltaTime;
+        
+            
 
         //Debug.Log($"ValueX : {valueX} | ValueY : {valueY}");
         
         // si on bouge on calcule la nouvelle position
         if (valueX != 0 || valueY != 0)
         {
-            pn = GetClosestPoint(transform.position, transform.forward, transform.up, 0.5f, 0.1f, 30, -30, 4);
-            //        pn = GetClosestPointIco(transform.position, transform.up, 0.2f);
+            if (sideWalk)
+            {
+                pn = GetClosestPoint(transform.position, transform.forward, transform.up, 0.5f, 0.1f, 30, -30, 4);
+                //        pn = GetClosestPointIco(transform.position, transform.up, 0.2f);
 
-            upward = pn[1];
+                upward = pn[1];
 
-            Vector3[] pos = GetClosestPoint(transform.position, transform.forward, transform.up, 0.5f, raysEccentricity, innerRaysOffset, outerRaysOffset, raysNb);
-            transform.position = Vector3.Lerp(lastPosition, pos[0], 1f / (1f + smoothness));
+                Vector3[] pos = GetClosestPoint(transform.position, transform.forward, transform.up, 0.5f, raysEccentricity, innerRaysOffset, outerRaysOffset, raysNb);
+                transform.position = Vector3.Lerp(lastPosition, pos[0], 1f / (1f + smoothness));
 
-            forward = velocity.normalized;
+                forward = velocity.normalized;
             
-            Quaternion q = Quaternion.LookRotation(forward, upward);
-            transform.rotation = Quaternion.Lerp(lastRot, q, 1f / (1f + smoothness));
+                Quaternion q = Quaternion.LookRotation(forward, upward);
+                transform.rotation = Quaternion.Lerp(lastRot, q, 1f / (1f + smoothness));
+            }
+            else
+            {
+                pn = GetClosestPoint(transform.position, -transform.forward, transform.up, 0.5f, 0.1f, 30, -30, 4);
+                //        pn = GetClosestPointIco(transform.position, transform.up, 0.2f);
+
+                upward = pn[1];
+
+                Vector3[] pos = GetClosestPoint(transform.position, -transform.forward, transform.up, 0.5f, raysEccentricity, innerRaysOffset, outerRaysOffset, raysNb);
+                transform.position = Vector3.Lerp(lastPosition, pos[0], 1f / (1f + smoothness));
+
+                forward = -velocity.normalized;
+            
+                Quaternion q = Quaternion.LookRotation(forward, upward);
+                transform.rotation = Quaternion.Lerp(lastRot, q, 1f / (1f + smoothness));
+            }
         }
 
         lastRot = transform.rotation;
