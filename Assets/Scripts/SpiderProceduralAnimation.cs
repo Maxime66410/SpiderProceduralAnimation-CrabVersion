@@ -71,6 +71,14 @@ public class SpiderProceduralAnimation : MonoBehaviour
     // On effectue un pas
     IEnumerator PerformStep(int firstIndex, int secondIndex, Vector3 firstTargetPoint, Vector3 secondTargetPoint)
     {
+        // Si la patte est déjà dans la bonne position
+        if( Vector3.Distance(legTargets[firstIndex].position, firstTargetPoint) < 0.001f &&
+            Vector3.Distance(legTargets[secondIndex].position, secondTargetPoint) < 0.001f)
+        {
+            _legMoving[firstIndex / 2] = false;
+            yield break;
+        }
+        
         Vector3 firstStartPos = _lastLegPositions[firstIndex];
         Vector3 secondStartPos = _lastLegPositions[secondIndex];
 
@@ -140,7 +148,7 @@ public class SpiderProceduralAnimation : MonoBehaviour
             Vector3 targetPoint2 = Vector3.zero;
             Vector3[] positionAndNormalFwdSecond = Array.Empty<Vector3>();
             Vector3[] positionAndNormalBwdSecond = Array.Empty<Vector3>();
-            
+
             if (indexToMove + 1 < _nbLegs)
             {
                 secondIndex = indexToMove + 1;
@@ -150,7 +158,7 @@ public class SpiderProceduralAnimation : MonoBehaviour
                 secondIndex = indexToMove - 1;
             }
 
-                // Avec desiredPositions[indexToMove] plus Mathf.Clamp pour éviter que la patte ne se déplace trop loin
+            // Avec desiredPositions[indexToMove] plus Mathf.Clamp pour éviter que la patte ne se déplace trop loin
             Vector3 targetPoint = desiredPositions[firstIndex] + Mathf.Clamp(_velocity.magnitude * _velocityMultiplier, 0.0f, 1.5f) * (desiredPositions[firstIndex] - legTargets[firstIndex].position) + _velocity * _velocityMultiplier;
             targetPoint2 = desiredPositions[secondIndex] + Mathf.Clamp(_velocity.magnitude * _velocityMultiplier, 0.0f, 1.5f) * (desiredPositions[secondIndex] - legTargets[secondIndex].position) + _velocity * _velocityMultiplier;
 
