@@ -4446,6 +4446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crabe
       objectReference: {fileID: 0}
+    - target: {fileID: 253102592200250577, guid: f70ceaf3466aaa743998b4c12f8f3880, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 313119358135444938, guid: f70ceaf3466aaa743998b4c12f8f3880, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.038
