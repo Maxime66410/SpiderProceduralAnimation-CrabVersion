@@ -72,8 +72,8 @@ public class SpiderProceduralAnimation : MonoBehaviour
     IEnumerator PerformStep(int firstIndex, int secondIndex, Vector3 firstTargetPoint, Vector3 secondTargetPoint)
     {
         // Si la patte est déjà dans la bonne position
-        if( Vector3.Distance(legTargets[firstIndex].position, firstTargetPoint) < 0.001f &&
-            Vector3.Distance(legTargets[secondIndex].position, secondTargetPoint) < 0.001f)
+        if( Vector3.Distance(legTargets[firstIndex].position, firstTargetPoint) < 0.1f ||
+            Vector3.Distance(legTargets[secondIndex].position, secondTargetPoint) < 0.1f)
         {
             _legMoving[firstIndex / 2] = false;
             yield break;
