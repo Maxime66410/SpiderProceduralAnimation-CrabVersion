@@ -85,12 +85,12 @@ public class SpiderProceduralAnimation : MonoBehaviour
         for (int i = 1; i <= smoothness; ++i)
         {
             float t = i / (float)(smoothness + 1f);
+            float t2 = i / (float)(smoothness - 0.8f);
             legTargets[firstIndex].position = Vector3.Lerp(firstStartPos, firstTargetPoint, t);
-            legTargets[secondIndex].position = Vector3.Lerp(secondStartPos, secondTargetPoint, t);
+            legTargets[secondIndex].position = Vector3.Lerp(secondStartPos, secondTargetPoint, t2);
 
             legTargets[firstIndex].position += transform.up * (Mathf.Sin(t * Mathf.PI) * stepHeight);
-            legTargets[secondIndex].position += transform.up * (Mathf.Sin(t * Mathf.PI) * stepHeight);
-
+            legTargets[secondIndex].position += transform.up * (Mathf.Sin(t2 * Mathf.PI) * stepHeight);
             yield return new WaitForFixedUpdate();
         }
 
