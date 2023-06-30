@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -136,6 +137,10 @@ public class SpiderProceduralAnimation : MonoBehaviour
         {
             int firstIndex = indexToMove;
             int secondIndex = 0;
+            Vector3 targetPoint2 = Vector3.zero;
+            Vector3[] positionAndNormalFwdSecond = Array.Empty<Vector3>();
+            Vector3[] positionAndNormalBwdSecond = Array.Empty<Vector3>();
+            
             if (indexToMove + 1 < _nbLegs)
             {
                 secondIndex = indexToMove + 1;
@@ -146,23 +151,28 @@ public class SpiderProceduralAnimation : MonoBehaviour
             }
 
                 // Avec desiredPositions[indexToMove] plus Mathf.Clamp pour éviter que la patte ne se déplace trop loin
-            Vector3 targetPoint = desiredPositions[indexToMove] + Mathf.Clamp(_velocity.magnitude * _velocityMultiplier, 0.0f, 1.5f) * (desiredPositions[indexToMove] - legTargets[indexToMove].position) + _velocity * _velocityMultiplier;
+            Vector3 targetPoint = desiredPositions[firstIndex] + Mathf.Clamp(_velocity.magnitude * _velocityMultiplier, 0.0f, 1.5f) * (desiredPositions[firstIndex] - legTargets[firstIndex].position) + _velocity * _velocityMultiplier;
+            targetPoint2 = desiredPositions[secondIndex] + Mathf.Clamp(_velocity.magnitude * _velocityMultiplier, 0.0f, 1.5f) * (desiredPositions[secondIndex] - legTargets[secondIndex].position) + _velocity * _velocityMultiplier;
 
             // On calcule la position du point de contact
             Vector3[] positionAndNormalFwd = MatchToSurfaceFromAbove(targetPoint + _velocity * _velocityMultiplier, raycastRange, (transform.parent.up - _velocity * 100).normalized);
             // On calcule la position du point de contact avec la patte en arrière
             Vector3[] positionAndNormalBwd = MatchToSurfaceFromAbove(targetPoint + _velocity * _velocityMultiplier, raycastRange*(1f + _velocity.magnitude), (transform.parent.up + _velocity * 75).normalized);
             
+            positionAndNormalFwdSecond = MatchToSurfaceFromAbove(targetPoint2 + _velocity * _velocityMultiplier, raycastRange, (transform.parent.up - _velocity * 100).normalized);
+            
+            positionAndNormalBwdSecond = MatchToSurfaceFromAbove(targetPoint2 + _velocity * _velocityMultiplier, raycastRange*(1f + _velocity.magnitude), (transform.parent.up + _velocity * 75).normalized);
+            
             _legMoving[firstIndex / 2] = true;
             
             // On effectue le pas
             if (positionAndNormalFwd[1] == Vector3.zero) // Si la patte est en l'air
             {
-                StartCoroutine(PerformStep(firstIndex, secondIndex, positionAndNormalBwd[0], positionAndNormalBwd[0]));
+                StartCoroutine(PerformStep(firstIndex, secondIndex, positionAndNormalBwd[0], positionAndNormalBwdSecond[0]));
             }
             else
             {
-                StartCoroutine(PerformStep(firstIndex, secondIndex, positionAndNormalFwd[0], positionAndNormalFwd[0]));
+                StartCoroutine(PerformStep(firstIndex, secondIndex, positionAndNormalFwd[0], positionAndNormalFwdSecond[0]));
             }
         }
 
